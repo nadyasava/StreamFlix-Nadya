@@ -29,7 +29,7 @@ const RecommendedMovies = ({ movie_id }) => {
 
   return (
     <div className="recommended-movies">
-      <h2>Recommended Movies</h2>
+      <h2 className='title'>Recommended Movies</h2>
       <div className="movie-list">
         {recommendedMovies.map((movie) => (
           <div key={movie.id} className="movie-item">

@@ -1,9 +1,10 @@
 import React from 'react';
 import { useNavigate } from 'react-router-dom';
+import { FaWallet } from 'react-icons/fa';
 import '../styles/Header.css';
 import colors from '../styles/colors';
 
-const Header = () => {
+const Header = ({ balance }) => {
     const navigate = useNavigate();
 
     const handleTitleClick = () => {
@@ -11,10 +12,14 @@ const Header = () => {
     };
 
     return (
-        <header style={{ backgroundColor: colors.primary, padding: '20px', textAlign: 'center' }}>
-            <h1 style={{ color: colors.secondary, cursor: 'pointer' }} onClick={handleTitleClick}>
+        <header className="header">
+            <h1 className="header-title" onClick={handleTitleClick}>
                 StreamFlix
             </h1>
+            <div className="header-balance">
+                <FaWallet className="wallet-icon" />
+                Balance: Rp. {balance}
+            </div>
         </header>
     );
 };

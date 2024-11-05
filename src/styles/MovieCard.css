@@ -54,3 +54,23 @@
 .movie-card__button:hover {
     background-color: #a67d44;
 }
+
+.movie-card__owned {
+    font-size: 0.9em;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 15px 0;
+}
+
+.movie-card__owned.owned {
+    color: green;
+}
+
+.movie-card__owned.not-owned {
+    color: red;
+}
+
+.status-icon {
+    margin-right: 5px;
+}

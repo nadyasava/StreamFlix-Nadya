@@ -29,7 +29,7 @@ const SimilarMovies = ({ movie_id }) => {
 
   return (
     <div className="similar-movies"> 
-      <h2>Similar Movies</h2>
+      <h2 className='title' >Similar Movies</h2>
       <div className="movie-list">
         {similarMovies.map((movie) => (
           <div key={movie.id} className="movie-item">

@@ -1,11 +1,25 @@
-header {
+.header {
+    background-color: #a67d44;
     padding: 20px;
     display: flex;
     justify-content: space-between;
     align-items: center;
 }
 
-h1 {
+.header-title {
+    color: #5d1c34;
     font-size: 1.8em;
     margin: 0;
+    cursor: pointer;
+}
+
+.header-balance {
+    color: #5d1c34;
+    font-weight: normal;
+    display: flex;
+    align-items: center;
+}
+
+.wallet-icon {
+    margin-right: 5px;
 }

@@ -10,14 +10,20 @@ import { FaPlay } from "react-icons/fa";
 import SimilarMovies from "../components/SimilarMovies";
 import RecommendedMovies from "../components/RecommendedMovies";
 import TrailerModal from "../components/TrailerModal";
+import PurchaseModal from "../components/PurchaseModal";
+import ConfirmationModal from "../components/ConfirmationModal";
 
-const DetailPage = () => {
+const DetailPage = ({ balance, setBalance, onPurchase, ownedMovies = [] }) => {
   const { movie_id } = useParams();
   const [movieDetails, setMovieDetails] = useState(null);
-  const [cast, setCast] = useState([]);
   const [error, setError] = useState(null);
   const [loading, setLoading] = useState(true);
   const [showModal, setShowModal] = useState(false);
+  const [showPurchaseModal, setShowPurchaseModal] = useState(false);
+  const [showConfirmationModal, setShowConfirmationModal] = useState(false);
+
+  // Check if the movie is owned
+  const isOwned = ownedMovies.includes(Number(movie_id));
 
   useEffect(() => {
     const fetchMovieDetails = async () => {
@@ -41,6 +47,46 @@ const DetailPage = () => {
 
   const openModal = () => setShowModal(true);
   const closeModal = () => setShowModal(false);
+
+  const handlePurchase = () => {
+    const price = getPriceByRating(movieDetails.vote_average);
+    const numericPrice = parseInt(price.replace(/\D/g, ""), 10);
+
+    if (balance >= numericPrice) {
+      setBalance(balance - numericPrice);
+      onPurchase(movie_id);
+      setShowPurchaseModal(true);
+    } else {
+      alert("Insufficient balance!");
+    }
+  };
+
+  const confirmPurchase = () => {
+    setShowConfirmationModal(false);
+    handlePurchase();
+  };
+
+  const openConfirmationModal = () => {
+    setShowConfirmationModal(true);
+  };
+
+  const closeConfirmationModal = () => {
+    setShowConfirmationModal(false);
+  };
+
+  const getPriceByRating = (rating) => {
+    if (rating >= 1 && rating <= 3) {
+      return "Rp. 3.500";
+    } else if (rating > 3 && rating <= 6) {
+      return "Rp. 8.250";
+    } else if (rating > 6 && rating <= 8) {
+      return "Rp. 16.350";
+    } else if (rating > 8 && rating <= 10) {
+      return "Rp. 21.250";
+    } else {
+      return "N/A";
+    }
+  };
 
   if (error) return <div className="error">{error}</div>;
   if (loading) return <Loader />;
@@ -85,13 +131,23 @@ const DetailPage = () => {
             Duration: {movieDetails.runtime} minutes
           </p>
           <p className="movie-overview">{movieDetails.overview}</p>
-          <p className="movie-availability">Available for Purchase</p>
-          <button className="buy-button">Buy Now</button>
+          <p className="movie-availability">
+            {isOwned ? "Owned" : "Available for Purchase"}
+          </p>
+          <button
+            className="buy-button"
+            onClick={
+              isOwned ? () => setShowPurchaseModal(true) : openConfirmationModal
+            }
+            disabled={isOwned}
+          >
+            {isOwned ? "Owned" : "Buy Now"}
+          </button>
         </div>
       </div>
 
       <div className="additional-info">
-        <h2>Casts</h2>
+        <h2 className="title">Casts</h2>
         <Cast movie_id={movie_id} />
       </div>
 
@@ -102,6 +158,20 @@ const DetailPage = () => {
         movie_id={movie_id}
         showModal={showModal}
         closeModal={closeModal}
+      />
+
+      <ConfirmationModal
+        showModal={showConfirmationModal}
+        onClose={closeConfirmationModal}
+        onConfirm={confirmPurchase}
+        movieTitle={movieDetails.title}
+      />
+
+      <PurchaseModal
+        showModal={showPurchaseModal}
+        onClose={() => setShowPurchaseModal(false)}
+        movieTitle={movieDetails.title}
+        newBalance={balance}
       />
     </div>
   );
