@@ -1,7 +1,10 @@
 import React from 'react';
+import { useNavigate } from 'react-router-dom';
 import '../styles/MovieCard.css';
 
 const MovieCard = ({ movie }) => {
+    const navigate = useNavigate();
+
     // Function to determine price based on rating
     const getPriceByRating = (rating) => {
         if (rating >= 1 && rating <= 3) {
@@ -17,8 +20,12 @@ const MovieCard = ({ movie }) => {
         }
     };
 
+    const handleCardClick = () => {
+        navigate(`/movie/${movie.id}`); // Navigate to the detail page using only the movie_id
+    };
+    
     return (
-        <div className="movie-card">
+        <div className="movie-card" onClick={handleCardClick} style={{ cursor: 'pointer' }}>
             <img className="movie-card__poster" src={movie.poster} alt={movie.title} />
             <div className="movie-card__info">
                 <h3 className="movie-card__title">{movie.title}</h3>

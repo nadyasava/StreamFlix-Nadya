@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react';
 import { useLocation, useNavigate } from 'react-router-dom';
 import axios from 'axios';
 import MovieCard from '../components/MovieCard';
+import Loader from '../components/Loader';  // Import the Loader component
 import colors from '../styles/colors';
 import '../styles/HomePage.css';
 
@@ -11,7 +12,7 @@ const HomePage = () => {
     const [error, setError] = useState(null);
     const [page, setPage] = useState(1);
     const [totalPages, setTotalPages] = useState(1);
-    const itemsPerPage = 10;
+    const itemsPerPage = 8;
 
     const location = useLocation();
     const navigate = useNavigate();
@@ -27,6 +28,7 @@ const HomePage = () => {
     useEffect(() => {
         const fetchMovies = async () => {
             try {
+                setLoading(true); 
                 const response = await axios.get(`${process.env.REACT_APP_BASE_URL}/movie/now_playing`, {
                     params: {
                         api_key: process.env.REACT_APP_TMDB_KEY,
@@ -48,11 +50,19 @@ const HomePage = () => {
     }, [page]);
 
     if (loading) {
-        return <div>Loading...</div>;
+        return (
+            <div className="home-page" style={{ backgroundColor: colors.background, color: colors.textbody }}>
+                <Loader />  {/* Display the loader component */}
+            </div>
+        );
     }
 
     if (error) {
-        return <div>Error: {error}</div>;
+        return (
+            <div className="home-page" style={{ backgroundColor: colors.background, color: colors.textbody }}>
+                <div>Error: {error}</div>
+            </div>
+        );
     }
 
     const handlePageChange = (newPage) => {
@@ -65,7 +75,7 @@ const HomePage = () => {
         if (page > 1) {
             paginationButtons.push(
                 <button 
-                    className={`pagination-button prev-next-button`}
+                    className="pagination-button prev-next-button"
                     key="prev" 
                     onClick={() => handlePageChange(page - 1)} 
                     disabled={page === 1}
@@ -95,7 +105,7 @@ const HomePage = () => {
         if (page < totalPages) {
             paginationButtons.push(
                 <button 
-                    className={`pagination-button prev-next-button`}
+                    className="pagination-button prev-next-button"
                     key="next" 
                     onClick={() => handlePageChange(page + 1)} 
                     disabled={page === totalPages}
@@ -118,7 +128,7 @@ const HomePage = () => {
                         movie={{
                             id: movie.id,
                             title: movie.title,
-                            poster: `https://image.tmdb.org/t/p/w500${movie.poster_path}`,
+                            poster: movie.poster_path ? `https://image.tmdb.org/t/p/w500${movie.poster_path}` : 'assets/poster_not_available.png',
                             rating: movie.vote_average,
                             owned: false
                         }}

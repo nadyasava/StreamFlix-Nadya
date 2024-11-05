@@ -3,7 +3,7 @@
     border-radius: 8px;
     overflow: hidden;
     margin: 20px;
-    width: 250px;
+    width: 220px;
     transition: transform 0.3s, box-shadow 0.3s;
     box-shadow: 0 0 15px rgba(166, 125, 68, 0.3);
 }
@@ -26,11 +26,18 @@
 
 .movie-card__title {
     font-size: 1.2em;
-    margin: 10px 0;
     color: #efe9e1;
+    padding: 10px;
+    white-space: normal;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    line-height: 1.2;
+    height: 4em;
 }
 
+
 .movie-card__owned {
+    margin-top: 0.5em;
     font-size: 0.9em;
     color: #555;
 }
