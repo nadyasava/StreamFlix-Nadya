@@ -12,7 +12,7 @@ const HomePage = ({ ownedMovies }) => {
   const [error, setError] = useState(null);
   const [page, setPage] = useState(1);
   const [totalPages, setTotalPages] = useState(1);
-  const itemsPerPage = 8;
+  const itemsPerPage = 10;
 
   const location = useLocation();
   const navigate = useNavigate();

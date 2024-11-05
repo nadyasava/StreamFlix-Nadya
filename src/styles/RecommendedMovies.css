@@ -1,5 +1,6 @@
 .recommended-movies {
     margin-top: 40px;
+    padding: 0 2em;
 }
 
 .recommended-movies h2 {
@@ -7,26 +8,75 @@
     margin-bottom: 20px;
 }
 
-.movie-list {
+.carousel-container {
+    position: relative;
+    padding: 0 40px;
+}
+
+.recommended-movie-list {
     display: flex;
     gap: 15px;
-    overflow-x: hidden;
-    padding: 0 10em 5em 10em;
-    white-space: nowrap;
+    overflow: hidden;
+    padding: 0 0 2em 0;
+    transition: transform 0.3s ease;
+    justify-content: center;
 }
 
 .movie-item {
-    width: 150px;
-    text-align: center;
+    width: calc((100% - 90px) / 7);
     flex: 0 0 auto;
+    text-align: center;
 }
 
 .movie-item img {
     width: 100%;
+    height: auto;
     border-radius: 5px;
     transition: transform 0.3s;
 }
 
 .movie-item img:hover {
     transform: scale(1.05);
+}
+
+.carousel-button {
+    margin: 0 5em 0 5em;
+    position: absolute;
+    top: 50%;
+    transform: translateY(-100%);
+    background: rgba(0, 0, 0, 0.5);
+    border: none;
+    border-radius: 50%;
+    width: 40px;
+    height: 40px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    color: white;
+    z-index: 1;
+    transition: background-color 0.3s;
+}
+
+.carousel-button:hover {
+    background: rgba(0, 0, 0, 0.8);
+}
+
+.carousel-button.prev {
+    left: 0;
+}
+
+.carousel-button.next {
+    right: 0;
+}
+
+.movie-item p {
+    margin-top: 8px;
+    font-size: 0.9em;
+    white-space: normal;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    display: -webkit-box;
+    -webkit-box-orient: vertical;
+    height: 2.4em;
 }

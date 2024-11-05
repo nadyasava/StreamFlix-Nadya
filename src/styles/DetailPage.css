@@ -77,6 +77,13 @@
     transform: scale(1.05);
 }
 
+.title {
+    font-size: 2em;
+    margin: 0;
+    padding: 20px;
+    text-align: center;
+}
+
 .movie-info {
     max-width: 50vw;
     margin: 0;
