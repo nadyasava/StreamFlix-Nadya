@@ -6,6 +6,11 @@ import "../styles/MovieCard.css";
 const MovieCard = ({ movie, isOwned }) => {
   const navigate = useNavigate();
 
+  // Function to create slug from movie title
+  const createSlug = (title) => {
+    return title.toLowerCase().replace(/\s+/g, '-').replace(/[^\w-]+/g, '');
+  };
+
   // Function to determine price based on rating
   const getPriceByRating = (rating) => {
     if (rating >= 1 && rating <= 3) {
@@ -22,7 +27,8 @@ const MovieCard = ({ movie, isOwned }) => {
   };
 
   const handleCardClick = () => {
-    navigate(`/movie/${movie.id}`);
+    const slug = createSlug(movie.title);
+    navigate(`/${movie.id}-${slug}`);
   };
 
   return (

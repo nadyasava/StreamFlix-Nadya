@@ -23,7 +23,7 @@ const App = () => {
         <Routes>
           <Route path="/" element={<HomePage ownedMovies={ownedMovies} />} />
           <Route
-            path="/movie/:movie_id"
+            path="/:id"
             element={
               <DetailPage
                 balance={balance}

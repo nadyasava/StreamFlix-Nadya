@@ -14,7 +14,8 @@ import PurchaseModal from "../components/PurchaseModal";
 import ConfirmationModal from "../components/ConfirmationModal";
 
 const DetailPage = ({ balance, setBalance, onPurchase, ownedMovies = [] }) => {
-  const { movie_id } = useParams();
+  const { id } = useParams();
+  const movie_id = id.split("-")[0]; // Mengambil ID dari format "id-slug"
   const [movieDetails, setMovieDetails] = useState(null);
   const [error, setError] = useState(null);
   const [loading, setLoading] = useState(true);
