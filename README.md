@@ -1,70 +1,68 @@
-# Getting Started with Create React App
+# Cara Menjalankan Proyek di Localhost
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+Ikuti langkah-langkah berikut untuk menjalankan proyek ini di localhost pada berbagai sistem operasi.
 
-## Available Scripts
+## 1. Meng-clone Repository
+Untuk memulai, Anda perlu meng-clone repository ini ke komputer lokal. Buka terminal atau command prompt, kemudian jalankan perintah berikut:
 
-In the project directory, you can run:
+```bash
+git clone https://github.com/nadyasava/StreamFlix-Nadya.git
+```
 
-### `npm start`
+## 2. Masuk ke Direktori Proyek
+Setelah berhasil meng-clone repository, masuk ke dalam folder proyek dengan perintah:
+```bash
+cd repository-name
+```
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+## 3. Instalasi Dependencies
+Sebelum menjalankan proyek, Anda perlu menginstal dependencies yang diperlukan. Jalankan perintah berikut untuk menginstal dependencies yang tercantum dalam package.json:
+```bash
+npm install
+```
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+## 4. Menjalankan Proyek di Localhost
+Setelah dependencies terinstal, Anda bisa menjalankan proyek di localhost dengan perintah:
+```bash
+npm start
+```
+Server akan dimulai, dan aplikasi akan dibuka di browser default Anda. Jika aplikasi tidak terbuka secara otomatis, Anda dapat membuka browser dan mengakses aplikasi dengan URL:
+```bash
+http://localhost:3000
+```
 
-### `npm test`
+# Langkah untuk Setiap Sistem Operasi
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+## Windows
+### 1. Instalasi Node.js:
+- Unduh dan instal Node.js dari nodejs.org.
+- Pastikan untuk mencentang opsi "Add to PATH" selama instalasi agar node dan npm dapat dijalankan di terminal.
+### 2. Menggunakan Command Prompt atau PowerShell:
+- Buka Command Prompt atau PowerShell.
+- Ikuti langkah-langkah di atas untuk meng-clone repository, menginstal dependencies, dan menjalankan aplikasi.
 
-### `npm run build`
+## MacOS
+### 1. Instalasi Node.js:
+- Anda dapat menginstal Node.js menggunakan Homebrew. Jika belum terpasang, instal Homebrew terlebih dahulu dengan menjalankan perintah:
+  ```bash
+  /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
+  ```
+- Setelah itu, instal Node.js dengan perintah:
+  ```bash
+  brew install node
+  ```
+### 2. Menjalankan Proyek:
+- Buka Terminal dan jalankan langkah-langkah yang sama seperti yang ada di atas untuk meng-clone repository dan menjalankan aplikasi.
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+## Linux (Ubuntu)
+### 1. Instalasi Node.js:
+- Buka terminal dan jalankan perintah berikut untuk menginstal Node.js dan npm:
+  ```bash
+  sudo apt update
+  sudo apt install nodejs npm
+  ```
+- Setelah Node.js terinstal, ikuti langkah-langkah yang sama untuk meng-clone repository dan menjalankan aplikasi.
+### 2. Menjalankan Proyek:
+- Buka Terminal dan jalankan langkah-langkah yang sama seperti yang ada di atas untuk meng-clone repository dan menjalankan aplikasi.
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
-
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
-
-### `npm run eject`
-
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
-
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
-
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
-
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
-
-### Code Splitting
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
-
-### Analyzing the Bundle Size
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
-
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+Dengan mengikuti langkah-langkah di atas, proyek ini seharusnya dapat berjalan di localhost Anda pada berbagai sistem operasi. Jika Anda mengalami masalah, pastikan Node.js dan npm sudah terpasang dengan benar, dan coba ulangi proses instalasi dependencies.
