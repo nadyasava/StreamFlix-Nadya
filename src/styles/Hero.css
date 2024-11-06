@@ -94,9 +94,28 @@
     }
 }
 
+@media (max-width: 1024px) {
+    .hero-description {
+        margin: auto 15%;
+        font-size: 1.05rem;
+    }
+
+    .hero-title {
+        font-size: 2rem;
+    }
+
+    .hero-subtitle {
+        font-size: 1.1rem;
+    }
+
+    .hero-icon {
+        font-size: 4.5rem;
+    }
+}
+
 @media (max-width: 768px) {
     .hero-description {
-        margin: auto 10%;
+        margin: auto 20%;
         font-size: 1rem;
     }
 
@@ -110,5 +129,26 @@
 
     .hero-icon {
         font-size: 4rem;
+    }
+}
+
+@media (max-width: 480px) {
+    .hero-description {
+        margin: 5% 10%;
+        font-size: 0.95rem;
+    }
+
+    .hero-title {
+        font-size: 1.5rem;
+        margin: 0 10%;
+    }
+
+    .hero-subtitle {
+        font-size: 0.9rem;
+        margin: 5% 12% 0 12%;
+    }
+
+    .hero-icon {
+        font-size: 3.5rem;
     }
 }
