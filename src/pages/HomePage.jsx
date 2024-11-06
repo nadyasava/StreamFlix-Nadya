@@ -3,7 +3,8 @@ import { useLocation, useNavigate } from "react-router-dom";
 import axios from "axios";
 import MovieCard from "../components/MovieCard";
 import Loader from "../components/Loader";
-import Blobs from '../components/Blobs';
+import Blobs from "../components/Blobs";
+import Hero from "../components/Hero";
 import colors from "../styles/colors";
 import "../styles/HomePage.css";
 
@@ -133,6 +134,7 @@ const HomePage = ({ ownedMovies }) => {
       className="home-page"
       style={{ backgroundColor: colors.background, color: colors.textbody }}
     >
+      <Hero />
       <Blobs />
       <h2 className="title" style={{ color: colors.texttitle }}>
         Now Showing
