@@ -17,7 +17,7 @@ const Footer = () => {
                     <FaGithub />
                 </a>
             </div>
-            <p>&copy; 2024 StreamFlix - Nadya Sava Maritza. All rights reserved.</p>
+            <p className='footer-cr'>&copy; 2024 StreamFlix - Nadya Sava Maritza. All rights reserved.</p>
         </footer>
     );
 };

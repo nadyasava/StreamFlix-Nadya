@@ -11,19 +11,22 @@
 .carousel-container {
     position: relative;
     padding: 0 40px;
+    overflow: hidden;
+}
+
+.similar-movie-list-wrapper {
+    overflow: hidden;
 }
 
 .similar-movie-list {
     display: flex;
     gap: 15px;
-    overflow: hidden;
     padding: 0 0 2em 0;
-    transition: transform 0.3s ease;
-    justify-content: center;
+    transition: transform 0.3s ease-out;
 }
 
 .movie-item {
-    width: calc((100% - 90px) / 7);
+    min-width: calc((100% - 75px) / 6);
     flex: 0 0 auto;
     text-align: center;
 }
@@ -58,8 +61,13 @@
     transition: background-color 0.3s;
 }
 
-.carousel-button:hover {
+.carousel-button:hover:not(:disabled) {
     background: rgba(0, 0, 0, 0.8);
+}
+
+.carousel-button:disabled {
+    opacity: 0.5;
+    cursor: not-allowed;
 }
 
 .carousel-button.prev {
@@ -79,4 +87,14 @@
     display: -webkit-box;
     -webkit-box-orient: vertical;
     height: 2.4em;
+}
+
+@media (max-width: 768px) {
+    .movie-item {
+        min-width: calc((100% - 45px) / 3);
+    }
+    
+    .carousel-button {
+        margin: 0 1em;
+    }
 }

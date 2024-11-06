@@ -1,11 +1,15 @@
 footer {
     background-color: #5d1c34;
-    color: #efe9e1;
+    color: black;
     text-align: center;
     padding: 20px;
     position: relative;
     bottom: 0;
     width: 100%;
+}
+
+.footer-cr {
+    color: black;
 }
 
 footer p {

@@ -6,7 +6,7 @@ const ConfirmationModal = ({ showModal, onClose, onConfirm, movieTitle }) => {
 
   return (
     <div className="modal-overlay" onClick={onClose}>
-      <div className="modal-content" onClick={(e) => e.stopPropagation()}>
+      <div className="confirm-modal-content" onClick={(e) => e.stopPropagation()}>
         <h2 className="conf-title">Confirm Purchase</h2>
         <p className="conf-text">Are you sure you want to buy "{movieTitle}"?</p>
         <div className="conf-modal-button">
