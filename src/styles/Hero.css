@@ -1,9 +1,8 @@
-/* Hero.css */
 .hero-flex-container {
     display: flex;
     justify-content: center;
     align-items: center;
-    min-height: 100vh;
+    min-height: 90vh;
     overflow: hidden;
     position: relative;
     background-color: #11100F;

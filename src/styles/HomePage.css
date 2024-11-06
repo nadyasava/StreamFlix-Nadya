@@ -1,6 +1,8 @@
 .home-page {
     text-align: center;
     min-height: 100vh;
+    min-width: 100vw;
+    overflow-x: hidden;
 }
 
 title {
@@ -15,9 +17,9 @@ title {
     display: flex;
     flex-wrap: wrap;
     justify-content: center;
-    gap: 20px; /* Menambahkan gap */
-    flex: 1; /* Membuat movie-list mengambil ruang yang tersedia */
-    min-height: 400px; /* Minimum height untuk movie list */
+    gap: 20px;
+    flex: 1;
+    min-height: 400px;
     padding: 20px 0;
 }
 
