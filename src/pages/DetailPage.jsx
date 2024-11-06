@@ -97,7 +97,7 @@ const DetailPage = ({ balance, setBalance, onPurchase, ownedMovies = [] }) => {
       className="detail-page"
       style={{ backgroundColor: colors.background, color: colors.textbody }}
     >
-      <div className="movie-hero">
+      <div className="movie-hero" data-aos="fade-down">
         <img
           src={
             movieDetails.backdrop_path
@@ -105,15 +105,15 @@ const DetailPage = ({ balance, setBalance, onPurchase, ownedMovies = [] }) => {
               : backdropNotAvailable
           }
           alt={movieDetails.title}
-          className="movie-hero-image"
+          className="movie-hero-image" 
         />
         <div className="movie-hero-overlay">
-          <h1 className="movie-title">{movieDetails.title}</h1>
+          <h1 className="movie-title" data-aos="fade-right">{movieDetails.title}</h1>
         </div>
       </div>
 
       <div className="movie-poster-info">
-        <div className="movie-poster" onClick={openModal}>
+        <div className="movie-poster" data-aos="fade-right" onClick={openModal}>
           <img
             src={`https://image.tmdb.org/t/p/w500${movieDetails.poster_path}`}
             alt={movieDetails.title}
@@ -124,12 +124,18 @@ const DetailPage = ({ balance, setBalance, onPurchase, ownedMovies = [] }) => {
           </div>
         </div>
 
-        <div className="movie-info">
+        <div className="movie-info" data-aos="fade-left">
           <p className="movie-rating">
             Rating: ★ {movieDetails.vote_average.toFixed(1)} / 10
           </p>
           <p className="movie-duration">
             Duration: {movieDetails.runtime} minutes
+          </p>
+          <p className="movie-genres">
+            Genres:{" "}
+            {movieDetails.genres && movieDetails.genres.length > 0
+              ? movieDetails.genres.map((genre) => genre.name).join(", ")
+              : "N/A"}
           </p>
           <p className="movie-overview">{movieDetails.overview}</p>
           <p className="movie-availability">

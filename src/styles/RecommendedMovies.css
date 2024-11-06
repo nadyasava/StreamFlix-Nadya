@@ -1,95 +1,105 @@
 .recommended-movies {
-    margin-top: 40px;
-    padding: 0 2em;
+  margin: 2em 0;
+  justify-content: center;
+  align-items: center;
 }
 
 .recommended-movies h2 {
-    font-size: 2em;
-    margin-bottom: 20px;
+  font-size: 2em;
+  margin-bottom: 0.5em;
 }
 
 .carousel-container {
-    position: relative;
-    padding: 0 40px;
-    overflow: hidden;
+  position: relative;
+  padding: 0 5em;
+  overflow: hidden;
+}
+
+.rec-error {
+  text-align: center;
+  color: #cdbcab;
+  font-size: 18px;
+  padding: 20px;
+  margin-top: 20px;
+  background-color: #5d1c34;
 }
 
 .recommended-movie-list-wrapper {
-    overflow: hidden;
+  overflow: hidden;
 }
 
 .recommended-movie-list {
-    display: flex;
-    gap: 15px;
-    padding: 0 0 2em 0;
-    transition: transform 0.3s ease-out;
+  display: flex;
+  gap: 15px;
+  padding: 0 0 2em 0;
+  transition: transform 0.3s ease-out;
 }
 
 .movie-item {
-    width: calc((100% - 90px) / 7);
-    flex: 0 0 auto;
-    text-align: center;
+  width: calc((100% - 90px) / 7);
+  flex: 0 0 auto;
+  text-align: center;
 }
 
 .movie-item img {
-    width: 100%;
-    height: auto;
-    border-radius: 5px;
-    transition: transform 0.3s;
+  width: 100%;
+  height: auto;
+  border-radius: 5px;
+  transition: transform 0.3s;
 }
 
 .movie-item img:hover {
-    transform: scale(1.05);
+  transform: scale(1.05);
 }
 
 .carousel-button {
-    margin: 0 5em 0 5em;
-    position: absolute;
-    top: 50%;
-    transform: translateY(-100%);
-    background: rgba(0, 0, 0, 0.5);
-    border: none;
-    border-radius: 50%;
-    width: 40px;
-    height: 40px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    cursor: pointer;
-    color: white;
-    z-index: 1;
-    transition: background-color 0.3s;
+  margin: 0 5em 0 5em;
+  position: absolute;
+  top: 50%;
+  transform: translateY(-100%);
+  background: rgba(0, 0, 0, 0.5);
+  border: none;
+  border-radius: 50%;
+  width: 40px;
+  height: 40px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  color: white;
+  z-index: 1;
+  transition: background-color 0.3s;
 }
 
 .carousel-button:hover {
-    background: rgba(0, 0, 0, 0.8);
+  background: rgba(0, 0, 0, 0.8);
 }
 
 .carousel-button.prev {
-    left: 0;
+  left: 0;
 }
 
 .carousel-button.next {
-    right: 0;
+  right: 0;
 }
 
 .movie-item p {
-    margin-top: 8px;
-    font-size: 0.9em;
-    white-space: normal;
-    overflow: hidden;
-    text-overflow: ellipsis;
-    display: -webkit-box;
-    -webkit-box-orient: vertical;
-    height: 2.4em;
+  margin-top: 8px;
+  font-size: 0.9em;
+  white-space: normal;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  display: -webkit-box;
+  -webkit-box-orient: vertical;
+  height: 2.4em;
 }
 
 @media (max-width: 768px) {
-    .movie-item {
-        min-width: calc((100% - 45px) / 3);
-    }
-    
-    .carousel-button {
-        margin: 0 1em;
-    }
+  .movie-item {
+    min-width: calc((100% - 45px) / 3);
+  }
+
+  .carousel-button {
+    margin: 0 1em;
+  }
 }

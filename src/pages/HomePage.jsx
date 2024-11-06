@@ -137,10 +137,10 @@ const HomePage = ({ ownedMovies }) => {
     >
       <Hero />
       <Blobs />
-      <h2 className="title" style={{ color: colors.texttitle }}>
+      <h2 className="title" data-aos="zoom-out" style={{ color: colors.texttitle, marginTop: "1em"}}>
         Now Showing
       </h2>
-      <div className="movie-list">
+      <div className="movie-list" data-aos="fade-up">
         {movies.map((movie) => (
           <MovieCard
             key={movie.id}

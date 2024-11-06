@@ -1,73 +1,74 @@
 .home-page {
-    text-align: center;
-    min-height: 100vh;
-    min-width: 100vw;
-    overflow-x: hidden;
+  text-align: center;
+  min-height: 100vh;
+  min-width: 100vw;
+  overflow-x: hidden;
 }
 
 title {
-    text-align: center;
-    margin-bottom: 20px;
-    color: #cdbcab;
-    text-shadow: 0 0 20px rgba(166, 125, 68, 0.8),
-                 0 0 20px rgba(166, 125, 68, 0.4);
+  text-align: center;
+  margin-bottom: 20px;
+  color: #cdbcab;
+  text-shadow: 0 0 20px rgba(166, 125, 68, 0.8),
+    0 0 20px rgba(166, 125, 68, 0.4);
 }
 
 .movie-list {
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: center;
-    gap: 20px;
-    flex: 1;
-    min-height: 400px;
-    padding: 20px 0;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 20px;
+  flex: 1;
+  min-height: 400px;
+  padding: 20px 0;
 }
 
 .next-btn {
-    background-color: #5d1c34;
-    color: white;
-    border: none;
-    padding: 8px 12px;
-    border-radius: 4px;
-    cursor: pointer;
-    margin: 20px;
+  background-color: #5d1c34;
+  color: white;
+  border: none;
+  padding: 8px 12px;
+  border-radius: 4px;
+  cursor: pointer;
+  margin: 20px;
 }
 
 .pagination {
-    margin-top: 2em;
-    padding-bottom: 2em;
+  position: relative;
+  margin-top: 2em;
+  padding-bottom: 2em;
 }
 
 .pagination-button {
-    margin: 0 5px;
-    background-color: transparent;
-    color: var(--text-body);
-    border: none;
-    padding: 5px 10px;
-    border-radius: 5px;
-    cursor: pointer;
-    transition: background-color 0.3s ease, color 0.3s ease;
+  margin: 0 5px;
+  background-color: transparent;
+  color: var(--text-body);
+  border: none;
+  padding: 5px 10px;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: background-color 0.3s ease, color 0.3s ease;
 }
 
 .pagination-button.active {
-    background-color: #a67d44;
-    color: #fff;
+  background-color: #a67d44;
+  color: #fff;
 }
 
 .pagination-button:hover:not(:disabled) {
-    background-color: rgba(166, 125, 68, 0.7);
+  background-color: rgba(166, 125, 68, 0.7);
 }
 
 .prev-next-button {
-    background-color: #5d1c34;
-    color: #fff;
+  background-color: #5d1c34;
+  color: #fff;
 }
 
 .prev-next-button:hover:not(:disabled) {
-    background-color: #7a2d46;
+  background-color: #7a2d46;
 }
 
 .prev-next-button:disabled {
-    background-color: #b33e53;
-    color: #666;
+  background-color: #b33e53;
+  color: #666;
 }

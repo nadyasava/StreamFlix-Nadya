@@ -1,11 +1,23 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import Header from "./components/Header";
 import Footer from "./components/Footer";
+import ScrollToTopButton from "./components/ScrollToTopButton";
 import HomePage from "./pages/HomePage";
 import DetailPage from "./pages/DetailPage";
+import AOS from "aos";
+import "aos/dist/aos.css"; 
 
 const App = () => {
+
+  useEffect(() => {
+    AOS.init({
+      duration: 1000,
+      easing: "ease-out",
+      once: true,
+    });
+  }, []);
+
   const [balance, setBalance] = useState(100000);
   const [ownedMovies, setOwnedMovies] = useState([]);
 
@@ -35,6 +47,7 @@ const App = () => {
           />
         </Routes>
       </main>
+      <ScrollToTopButton />
       <Footer />
     </div>
   );

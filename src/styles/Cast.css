@@ -1,62 +1,71 @@
 * {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
+  padding: 0;
+  box-sizing: border-box;
 }
 
 body {
-    width: 100%;
-    height: 100vh;
-    background-color: #000;
-    display: grid;
-    place-items: center;
+  width: 100%;
+  height: 100vh;
+  background-color: #000;
+  display: grid;
+  place-items: center;
+}
+
+.cast-error {
+  text-align: center;
+  color: #cdbcab;
+  font-size: 18px;
+  padding: 20px;
+  margin-top: 20px;
+  background-color: #5d1c34;
 }
 
 .cast-list {
-    display: flex;
-    justify-content: center;
-    flex-wrap: wrap;
-    gap: 30px;
-    margin-bottom: 10em;
-    margin-top: 3em;
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: 30px;
+  margin-bottom: 10em;
+  margin-top: 3em;
 }
 
 .cast-image {
-    position: relative;
-    width: 200px;
-    transition: transform 0.5s;
+  position: relative;
+  width: 200px;
+  transition: transform 0.5s;
 }
 
 .cast-image img {
-    width: 100%;
-    height: 17em;
-    object-fit: cover;
-    -webkit-box-reflect: below 2px linear-gradient(transparent, transparent, #0004);
-    transform-origin: center;
-    transform: perspective(800px) rotateY(25deg);
-    transition: transform 0.5s;
-    box-shadow: 0 0 15px rgba(166, 125, 68, 0.3)
+  width: 100%;
+  height: 17em;
+  object-fit: cover;
+  -webkit-box-reflect: below 2px
+    linear-gradient(transparent, transparent, #0004);
+  transform-origin: center;
+  transform: perspective(800px) rotateY(25deg);
+  transition: transform 0.5s;
+  box-shadow: 0 0 15px rgba(166, 125, 68, 0.3);
 }
 
 .cast-image:hover {
-    z-index: 1;
+  z-index: 1;
 }
 
 .cast-image:hover img {
-    transform: perspective(800px) rotateY(0deg);
-    box-shadow: 0 0 20px rgba(166, 125, 68, 0.8)
+  transform: perspective(800px) rotateY(0deg);
+  box-shadow: 0 0 20px rgba(166, 125, 68, 0.8);
 }
 
 .cast-name {
-    font-weight: bold;
-    margin-top: 15px;
-    font-size: 1.1em;
-    color: #cdbcab;
-    text-align: center;
+  font-weight: bold;
+  margin-top: 15px;
+  font-size: 1.1em;
+  color: #cdbcab;
+  text-align: center;
 }
 
 .cast-character {
-    color: #efe9e1;
-    font-size: 0.9em;
-    text-align: center;
+  color: #efe9e1;
+  font-size: 0.9em;
+  text-align: center;
 }

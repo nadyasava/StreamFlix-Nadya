@@ -1,8 +1,8 @@
-import React, { useEffect, useState } from 'react';
-import axios from 'axios';
-import '../styles/RecommendedMovies.css';
-import { FaChevronLeft, FaChevronRight } from 'react-icons/fa';
-import posterNotAvailable from '../assets/poster_not_available.png';
+import React, { useEffect, useState } from "react";
+import axios from "axios";
+import "../styles/RecommendedMovies.css";
+import { FaChevronLeft, FaChevronRight } from "react-icons/fa";
+import posterNotAvailable from "../assets/poster_not_available.png";
 
 const RecommendedMovies = ({ movie_id }) => {
   const [recommendedMovies, setRecommendedMovies] = useState([]);
@@ -21,7 +21,7 @@ const RecommendedMovies = ({ movie_id }) => {
         setRecommendedMovies(recommendedResponse.data.results);
         setImageErrors({});
       } catch (error) {
-        console.error('Error fetching recommended movies:', error);
+        console.error("Error fetching recommended movies:", error);
       }
     };
 
@@ -33,73 +33,75 @@ const RecommendedMovies = ({ movie_id }) => {
   };
 
   const handlePrevClick = () => {
-    setCurrentIndex((prevIndex) => 
+    setCurrentIndex((prevIndex) =>
       prevIndex === 0 ? recommendedMovies.length - 6 : prevIndex - 1
     );
   };
 
   const handleNextClick = () => {
-    setCurrentIndex((prevIndex) => 
+    setCurrentIndex((prevIndex) =>
       prevIndex >= recommendedMovies.length - 6 ? 0 : prevIndex + 1
     );
   };
 
   const handleImageError = (movieId) => {
-    setImageErrors(prev => ({
+    setImageErrors((prev) => ({
       ...prev,
-      [movieId]: true
+      [movieId]: true,
     }));
   };
 
-  if (recommendedMovies.length === 0) {
-    return null;
-  }
-
   return (
     <div className="recommended-movies">
-      <h2 className='title'>Recommended Movies</h2>
-      <div className="carousel-container">
-        <button 
-          className="carousel-button prev" 
-          onClick={handlePrevClick}
-          aria-label="Previous"
-          disabled={recommendedMovies.length <= 6}
-        >
-          <FaChevronLeft />
-        </button>
-        <div className="recommended-movie-list-wrapper">
-          <div 
-            className="recommended-movie-list"
-            style={{ 
-              transform: `translateX(-${currentIndex * (100 / 6)}%)`,
-            }}
-          >
-            {recommendedMovies.map((movie) => (
-              <div key={movie.id} className="movie-item">
-                <img
-                  src={
-                    !imageErrors[movie.id] && movie.poster_path
-                      ? `https://image.tmdb.org/t/p/w200${movie.poster_path}`
-                      : posterNotAvailable
-                  }
-                  alt={movie.title}
-                  onError={() => handleImageError(movie.id)}
-                  loading="lazy"
-                />
-                <p>{truncateTitle(movie.title, 15)}</p>
-              </div>
-            ))}
-          </div>
+      <h2 className="title">Recommended Movies</h2>
+      {recommendedMovies.length === 0 ? (
+        <div className="rec-error">
+          No recommendations available for this movie.
         </div>
-        <button 
-          className="carousel-button next" 
-          onClick={handleNextClick}
-          aria-label="Next"
-          disabled={recommendedMovies.length <= 6}
-        >
-          <FaChevronRight />
-        </button>
-      </div>
+      ) : (
+        <div className="carousel-container">
+          <button
+            className="carousel-button prev"
+            onClick={handlePrevClick}
+            aria-label="Previous"
+            disabled={recommendedMovies.length <= 6}
+          >
+            <FaChevronLeft />
+          </button>
+          <div className="recommended-movie-list-wrapper">
+            <div
+              className="recommended-movie-list"
+              style={{
+                transform: `translateX(-${currentIndex * (100 / 6)}%)`,
+              }}
+            >
+              {recommendedMovies.map((movie) => (
+                <div key={movie.id} className="movie-item">
+                  <img
+                    src={
+                      !imageErrors[movie.id] && movie.poster_path
+                        ? `https://image.tmdb.org/t/p/w200${movie.poster_path}`
+                        : posterNotAvailable
+                    }
+                    alt={movie.title}
+                    onError={() => handleImageError(movie.id)}
+                    loading="lazy"
+                  />
+                  <p>{truncateTitle(movie.title, 15)}</p>
+                </div>
+              ))}
+            </div>
+          </div>
+          <button
+            className="carousel-button next"
+            onClick={handleNextClick}
+            aria-label="Next"
+            disabled={recommendedMovies.length <= 6}
+          >
+            <FaChevronRight />
+          </button>
+        </div>
+      )}
     </div>
   );
 };

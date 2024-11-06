@@ -1,8 +1,8 @@
-import React, { useEffect, useState } from 'react';
-import axios from 'axios';
-import '../styles/SimilarMovies.css';
-import { FaChevronLeft, FaChevronRight } from 'react-icons/fa';
-import posterNotAvailable from '../assets/poster_not_available.png';
+import React, { useEffect, useState } from "react";
+import axios from "axios";
+import "../styles/SimilarMovies.css";
+import { FaChevronLeft, FaChevronRight } from "react-icons/fa";
+import posterNotAvailable from "../assets/poster_not_available.png";
 
 const SimilarMovies = ({ movie_id }) => {
   const [similarMovies, setSimilarMovies] = useState([]);
@@ -22,7 +22,7 @@ const SimilarMovies = ({ movie_id }) => {
         setSimilarMovies(similarResponse.data.results);
         setImageErrors({});
       } catch (error) {
-        console.error('Error fetching similar movies:', error);
+        console.error("Error fetching similar movies:", error);
       }
     };
 
@@ -36,7 +36,7 @@ const SimilarMovies = ({ movie_id }) => {
   const handlePrevClick = () => {
     if (isAnimating) return;
     setIsAnimating(true);
-    setCurrentIndex((prevIndex) => 
+    setCurrentIndex((prevIndex) =>
       prevIndex === 0 ? similarMovies.length - 7 : prevIndex - 1
     );
     setTimeout(() => setIsAnimating(false), 300);
@@ -45,66 +45,70 @@ const SimilarMovies = ({ movie_id }) => {
   const handleNextClick = () => {
     if (isAnimating) return;
     setIsAnimating(true);
-    setCurrentIndex((prevIndex) => 
+    setCurrentIndex((prevIndex) =>
       prevIndex >= similarMovies.length - 7 ? 0 : prevIndex + 1
     );
     setTimeout(() => setIsAnimating(false), 300);
   };
 
   const handleImageError = (movieId) => {
-    setImageErrors(prev => ({
+    setImageErrors((prev) => ({
       ...prev,
-      [movieId]: true
+      [movieId]: true,
     }));
   };
 
-  const translateValue = `-${currentIndex * (100 / 6)}%`;
-
   return (
-    <div className="similar-movies"> 
-      <h2 className='title'>Similar Movies</h2>
-      <div className="carousel-container">
-        <button 
-          className="carousel-button prev" 
-          onClick={handlePrevClick}
-          aria-label="Previous"
-          disabled={isAnimating}
-        >
-          <FaChevronLeft />
-        </button>
-        <div className="similar-movie-list-wrapper">
-          <div 
-            className="similar-movie-list"
-            style={{
-              transform: `translateX(${translateValue})`,
-              transition: 'transform 0.3s ease-out'
-            }}
-          >
-            {similarMovies.map((movie) => (
-              <div key={movie.id} className="movie-item">
-                <img
-                  src={
-                    !imageErrors[movie.id] && movie.poster_path
-                      ? `https://image.tmdb.org/t/p/w200${movie.poster_path}`
-                      : posterNotAvailable
-                  }
-                  alt={movie.title}
-                  onError={() => handleImageError(movie.id)}
-                />
-                <p>{truncateTitle(movie.title, 15)}</p>
-              </div>
-            ))}
-          </div>
+    <div className="similar-movies">
+      <h2 className="title">Similar Movies</h2>
+      {similarMovies.length === 0 ? (
+        <div className="similar-error">
+          No similar movies available for this movie.
         </div>
-        <button 
-          className="carousel-button next" 
-          onClick={handleNextClick}
-          aria-label="Next"
-          disabled={isAnimating}
-        >
-          <FaChevronRight />
-        </button>
-      </div>
+      ) : (
+        <div className="carousel-container">
+          <button
+            className="carousel-button prev"
+            onClick={handlePrevClick}
+            aria-label="Previous"
+            disabled={isAnimating}
+          >
+            <FaChevronLeft />
+          </button>
+          <div className="similar-movie-list-wrapper">
+            <div
+              className="similar-movie-list"
+              style={{
+                transform: `translateX(-${currentIndex * (100 / 6)}%)`,
+                transition: "transform 0.3s ease-out",
+              }}
+            >
+              {similarMovies.map((movie) => (
+                <div key={movie.id} className="movie-item">
+                  <img
+                    src={
+                      !imageErrors[movie.id] && movie.poster_path
+                        ? `https://image.tmdb.org/t/p/w200${movie.poster_path}`
+                        : posterNotAvailable
+                    }
+                    alt={movie.title}
+                    onError={() => handleImageError(movie.id)}
+                  />
+                  <p>{truncateTitle(movie.title, 15)}</p>
+                </div>
+              ))}
+            </div>
+          </div>
+          <button
+            className="carousel-button next"
+            onClick={handleNextClick}
+            aria-label="Next"
+            disabled={isAnimating}
+          >
+            <FaChevronRight />
+          </button>
+        </div>
+      )}
     </div>
   );
 };

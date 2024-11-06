@@ -31,13 +31,17 @@ const Cast = ({ movie_id }) => {
     if (loading) return <div>Loading...</div>;
     if (error) return <div className="error">{error}</div>;
 
+    if (cast.length === 0) {
+        return <div className="cast-error">No cast information available for this movie.</div>;
+    }
+
     return (
         <div className="cast-list">
             {cast.slice(0, 5).map((member) => (
                 <div className="cast-image" key={member.id}>
                     <img
                         src={member.profile_path 
-                            ? `https://image.tmdb.org/t/p/w200${member.profile_path}`
+                            ? `https://image.tmdb.org/t/p/w200${member.profile_path}` 
                             : defaultImage}
                         alt={member.name || "No Image Available"}
                     />
