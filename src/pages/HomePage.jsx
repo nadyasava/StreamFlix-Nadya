@@ -37,10 +37,11 @@ const HomePage = ({ ownedMovies }) => {
             params: {
               api_key: process.env.REACT_APP_TMDB_KEY,
               page: page,
-              region: "ID", // Indonesia region
+              region: "ID",
             },
           }
         );
+        
         const totalResults = response.data.results;
         setMovies(totalResults.slice(0, itemsPerPage));
         setTotalPages(response.data.total_pages);
@@ -157,7 +158,7 @@ const HomePage = ({ ownedMovies }) => {
       </div>
       <div
         className="pagination"
-        style={{ textAlign: "center", margin: "20px 0" }}
+        style={{ textAlign: "center" }}
       >
         {renderPagination()}
       </div>

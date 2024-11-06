@@ -1,14 +1,17 @@
 import React from 'react';
-import { useNavigate } from 'react-router-dom';
+import { useNavigate, useLocation } from 'react-router-dom';
 import { FaWallet } from 'react-icons/fa';
 import '../styles/Header.css';
 import colors from '../styles/colors';
 
 const Header = ({ balance }) => {
     const navigate = useNavigate();
+    const location = useLocation();
 
     const handleTitleClick = () => {
-        navigate('/');
+        if (location.pathname !== '/') {
+            navigate('/');
+        }
     };
 
     return (
