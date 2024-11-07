@@ -2,7 +2,6 @@ import React from 'react';
 import { useNavigate, useLocation } from 'react-router-dom';
 import { FaWallet } from 'react-icons/fa';
 import '../styles/Header.css';
-import colors from '../styles/colors';
 
 const Header = ({ balance }) => {
     const navigate = useNavigate();
